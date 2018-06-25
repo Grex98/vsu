@@ -1,0 +1,44 @@
+list = [int(input('1)Enter 1 number: ')), int(input('2)Enter 2 number: ')), int(input('3)Enter 3 number: ')),
+        int(input('4)Enter 4 number: ')), int(input('5)Enter 5 number: ')), int(input('6)Enter 6 number: ')),
+        int(input('7)Enter 7 number: ')), int(input('8)Enter 8 number: ')), int(input('9)Enter 9 number: ')),
+        int(input('10)Enter 10 number: '))]  # Enter 10 elements in array
+
+def merge_sort(list):
+
+    if len(list) <= 1:
+        return list
+
+    mid = int(len(list)/2)
+
+    left_part = merge_sort(list[:mid])
+    right_part = merge_sort(list[mid:])
+
+    return merge(left_part,right_part)
+
+def merge(left_part,right_part):
+
+    result = []
+    left_pointer = right_pointer = 0
+
+    while len(left_part) > left_pointer and len(right_part) > right_pointer:
+
+        if left_part[left_pointer] <= right_part[right_pointer]:
+
+            result.append(left_part[left_pointer])
+            left_pointer += 1
+
+        else:
+
+            result.append(right_part[right_pointer])
+            right_pointer += 1
+
+    result.extend(left_part[left_pointer:])
+    result.extend(right_part[right_pointer:])
+
+    return result
+
+arr = list
+print(arr)
+
+sort_result = merge_sort(arr)
+print(sort_result)
